@@ -1,0 +1,13 @@
+@theme {
+  --font-sans: var(--font-roboto-sans);
+  --font-mono: var(--font-roboto-mono);
+  --color-light: #F5EEDC;
+  --color-primary: #27548A;
+  --color-secondary: #DDA853;
+  --color-dark: #183B4E;
+  --color-black: #000000;
+}
+
+body {
+  font-family: Roboto, sans-serif, monospace;
+}
