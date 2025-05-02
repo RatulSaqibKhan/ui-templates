@@ -1,16 +1,16 @@
 "use client";
 
-import { useState } from "react";
-import { toast } from "react-toastify";
+import Button from "@/componenets/ui/Button";
+import Input from "@/componenets/ui/Input";
+import { login } from "@/utils/auth";
 import Image from "next/image";
 import Link from "next/link";
-import { login } from "@/utils/auth";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { FaFacebookF, FaGoogle } from "react-icons/fa";
-import Input from "@/componenets/ui/Input";
-import Button from "@/componenets/ui/Button";
+import { toast } from "react-toastify";
 
-const Version1 = () => {
+const Version2 = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,23 +33,23 @@ const Version1 = () => {
     toast.info(`Login with ${provider} clicked`);
     // Add social login logic
   };
-
   return (
-    <main className="min-h-screen flex items-center justify-center bg-secondary px-4">
-      <div className="w-full max-w-md bg-white shadow-md rounded-lg p-8">
+    <div className="flex min-h-screen">
+      {/* Left Section */}
+      <div className="w-full md:w-1/2 flex flex-col justify-center px-8 sm:px-16 lg:px-24">
         {/* Logo */}
-        <div className="flex justify-center mb-6">
-          <Image src="/images/logo.svg" alt="Logo" width={200} height={100} />
+        <div className="mb-8">
+          <Image src="/images/logo.svg" alt="Logo" width={300} height={100} />
         </div>
 
         {/* Title */}
-        <h1 className="text-2xl font-semibold text-center text-dark mb-6">
-          Sign in to your account
+        <h1 className="text-2xl font-semibold text-primary mb-6">
+          Welcome Back
         </h1>
 
         {/* Email */}
         <Input
-          label="Email"
+          label="Email Address"
           type="email"
           value={email}
           placeholder="you@example.com"
@@ -81,31 +81,42 @@ const Version1 = () => {
         </Button>
 
         {/* Divider */}
-        <div className="flex items-center my-6">
-          <hr className="flex-1 border-gray-300" />
-          <span className="px-3 text-gray-500 text-sm">OR</span>
-          <hr className="flex-1 border-gray-300" />
+        <div className="my-6 text-center text-gray-500 text-sm">
+          or continue with
         </div>
 
-        {/* Social Buttons */}
-        <Button
-          onClick={() => handleSocialLogin("Google")}
-          className="w-full mb-3 custom-social-media-button"
-        >
-          <FaGoogle className="text-red-500" />
-          Continue with Google
-        </Button>
+        {/* Social Media Buttons */}
+        <div className="flex gap-4">
+          <Button
+            onClick={() => handleSocialLogin("Google")}
+            className="w-full mb-3 custom-social-media-button"
+          >
+            <FaGoogle className="text-red-500" />
+            Google
+          </Button>
 
-        <Button
-          onClick={() => handleSocialLogin("Facebook")}
-          className="w-full mb-3 custom-social-media-button"
-        >
-          <FaFacebookF className="text-blue-500" />
-          Continue with Facebook
-        </Button>
+          <Button
+            onClick={() => handleSocialLogin("Facebook")}
+            className="w-full mb-3 custom-social-media-button"
+          >
+            <FaFacebookF className="text-blue-500" />
+            Facebook
+          </Button>
+        </div>
       </div>
-    </main>
+
+      {/* Right Section (hidden on mobile) */}
+      <div className="hidden md:block md:w-1/2 relative">
+        <Image
+          src="/images/company_building.jpg"
+          alt="Background"
+          fill
+          className="object-cover"
+          priority
+        />
+      </div>
+    </div>
   );
 };
 
-export default Version1;
+export default Version2;

@@ -2,13 +2,15 @@ type ButtonProps = {
   children: React.ReactNode;
   onClick: () => void;
   className?: string;
+  type?: "button" | "submit" | "reset" | undefined;
 };
 
-export default function Button({ children, onClick, className }: ButtonProps) {
+export default function Button({ children, onClick, className, type = 'button' }: ButtonProps) {
   return (
     <button
+      type={type}
       onClick={onClick}
-      className={`px-4 py-2 text-light rounded bg-primary hover:bg-dark ${className}`}
+      className={`custom-primary-button ${className}`}
     >
       {children}
     </button>
