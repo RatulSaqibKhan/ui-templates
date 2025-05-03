@@ -7,8 +7,8 @@ import Link from "next/link";
 import { login } from "@/utils/auth";
 import { useRouter } from "next/navigation";
 import { FaFacebookF, FaGoogle } from "react-icons/fa";
-import Input from "@/componenets/ui/Input";
-import Button from "@/componenets/ui/Button";
+import FormInput from "@/componenets/ui/form-elements/FormInput";
+import Button from "@/componenets/ui/buinding-blocks/Button";
 
 const Version1 = () => {
   const router = useRouter();
@@ -48,7 +48,8 @@ const Version1 = () => {
         </h1>
 
         {/* Email */}
-        <Input
+        <FormInput
+          inputFieldId="email"
           label="Email"
           type="email"
           value={email}
@@ -57,7 +58,8 @@ const Version1 = () => {
         />
 
         {/* Password */}
-        <Input
+        <FormInput
+          inputFieldId="password"
           label="Password"
           type="password"
           value={password}
@@ -103,6 +105,17 @@ const Version1 = () => {
           <FaFacebookF className="text-blue-500" />
           Continue with Facebook
         </Button>
+
+        {/* Sign-up prompt */}
+        <div className="mt-4 text-center text-sm text-gray-600">
+          Don’t have an account?{" "}
+          <Link
+            href="/register"
+            className="text-primary font-medium hover:underline transition"
+          >
+            Sign up here
+          </Link>
+        </div>
       </div>
     </main>
   );

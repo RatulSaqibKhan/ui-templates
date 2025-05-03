@@ -1,11 +1,16 @@
 type ButtonProps = {
   children: React.ReactNode;
-  onClick: () => void;
+  onClick?: () => void;
   className?: string;
   type?: "button" | "submit" | "reset" | undefined;
 };
 
-export default function Button({ children, onClick, className, type = 'button' }: ButtonProps) {
+const Button = ({
+  children,
+  onClick,
+  className,
+  type = "button",
+}: ButtonProps) => {
   return (
     <button
       type={type}
@@ -15,4 +20,6 @@ export default function Button({ children, onClick, className, type = 'button' }
       {children}
     </button>
   );
-}
+};
+
+export default Button;

@@ -1,19 +1,21 @@
 "use client";
 
-import Button from "@/componenets/ui/Button";
-import Input from "@/componenets/ui/Input";
+import Button from "@/componenets/ui/buinding-blocks/Button";
+import FormInput from "@/componenets/ui/form-elements/FormInput";
+import FormInputGroup from "@/componenets/ui/form-elements/FormInputGroup";
 import { login } from "@/utils/auth";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { FaFacebookF, FaGoogle } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaFacebookF, FaGoogle } from "react-icons/fa";
 import { toast } from "react-toastify";
 
 const Version2 = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordVisibility, setPasswordVisibility] = useState<boolean>(false);
 
   const handleLogin = () => {
     if (!email || !password) {
@@ -33,6 +35,10 @@ const Version2 = () => {
     toast.info(`Login with ${provider} clicked`);
     // Add social login logic
   };
+
+  const handlePasswordVisibility = () => {
+    setPasswordVisibility(!passwordVisibility);
+  };
   return (
     <div className="flex min-h-screen">
       {/* Left Section */}
@@ -48,7 +54,8 @@ const Version2 = () => {
         </h1>
 
         {/* Email */}
-        <Input
+        <FormInput
+          inputFieldId="email"
           label="Email Address"
           type="email"
           value={email}
@@ -57,13 +64,16 @@ const Version2 = () => {
         />
 
         {/* Password */}
-        <Input
+        <FormInputGroup
+          inputFieldId="password"
           label="Password"
-          type="password"
-          value={password}
+          type={passwordVisibility ? "text" : "password"}
           placeholder="••••••••"
+          value={password}
           onChange={(e) => setPassword(e.target.value)}
-        />
+          append={passwordVisibility ? <FaEye /> : <FaEyeSlash />}
+          onAppendClick={() => handlePasswordVisibility()}
+        ></FormInputGroup>
 
         {/* Forgot Password */}
         <div className="text-right mb-4">
@@ -102,6 +112,17 @@ const Version2 = () => {
             <FaFacebookF className="text-blue-500" />
             Facebook
           </Button>
+        </div>
+
+        {/* Sign-up prompt */}
+        <div className="mt-4 text-center text-sm text-gray-600">
+          Don’t have an account?{" "}
+          <Link
+            href="/register"
+            className="text-primary font-medium hover:underline transition"
+          >
+            Sign up here
+          </Link>
         </div>
       </div>
 

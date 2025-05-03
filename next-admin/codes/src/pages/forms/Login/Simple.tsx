@@ -1,7 +1,7 @@
 "use client";
 
-import Button from "@/componenets/ui/Button";
-import Input from "@/componenets/ui/Input";
+import Button from "@/componenets/ui/buinding-blocks/Button";
+import FormInput from "@/componenets/ui/form-elements/FormInput";
 import { login } from "@/utils/auth";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -31,12 +31,14 @@ const Simple = () => {
       <div className="flex items-center justify-center h-screen">
         <div className="w-full max-w-md p-8 bg-white rounded shadow-md">
           <h2 className="mb-6 text-2xl font-semibold text-center text-dark">Login</h2>
-          <Input
+          <FormInput
+            inputFieldId="email"
             label="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <Input
+          <FormInput
+            inputFieldId="password"
             label="Password"
             type="password"
             value={password}
