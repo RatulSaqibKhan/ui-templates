@@ -129,7 +129,7 @@ const Version2 = () => {
       {/* Right Section (hidden on mobile) */}
       <div className="hidden md:block md:w-1/2 relative">
         <Image
-          src="/images/company_building.jpg"
+          src="/images/login_page_bg.svg"
           alt="Background"
           fill
           className="object-cover"
